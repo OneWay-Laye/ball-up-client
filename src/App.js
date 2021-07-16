@@ -1,7 +1,10 @@
-import React, { Component, Fragment } from 'react'
+import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import { v4 as uuid } from 'uuid'
 
+// This will import axios calls
+
+// This will import components
 import AuthenticatedRoute from './components/AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from './components/AutoDismissAlert/AutoDismissAlert'
 import Header from './components/Header/Header'
@@ -9,6 +12,8 @@ import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import SignOut from './components/SignOut/SignOut'
 import ChangePassword from './components/ChangePassword/ChangePassword'
+import Map from './components/Map/Map'
+import Parks from './components/Parks/Parks'
 
 class App extends Component {
   constructor (props) {
@@ -29,6 +34,10 @@ class App extends Component {
     })
   }
 
+  componentDidMount () {
+
+  }
+
   msgAlert = ({ heading, message, variant }) => {
     const id = uuid()
     this.setState((state) => {
@@ -40,8 +49,7 @@ class App extends Component {
     const { msgAlerts, user } = this.state
 
     return (
-      <Fragment>
-        <Header user={user} />
+      <div className='page-Container'>
         {msgAlerts.map(msgAlert => (
           <AutoDismissAlert
             key={msgAlert.id}
@@ -52,7 +60,12 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-        <main className="container">
+        <div className="map-Container">
+          <Map />
+        </div>
+        <div className="interactive-Container">
+          <Header user={user} />
+          <Parks />
           <Route path='/sign-up' render={() => (
             <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
@@ -65,8 +78,9 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/change-password' render={() => (
             <ChangePassword msgAlert={this.msgAlert} user={user} />
           )} />
-        </main>
-      </Fragment>
+        </div>
+
+      </div>
     )
   }
 }
