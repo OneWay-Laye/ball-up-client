@@ -5,5 +5,17 @@ export default {
   signInFailure: 'Failed to sign in. Check your email and password and try again.',
   signOutSuccess: 'Come back soon!',
   changePasswordSuccess: 'Password changed successfully!',
-  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.'
+  changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
+  indexParkSuccess: 'Succesfully showing all Parks in your area',
+  indexParkFailure: 'Problem showing parks in your area',
+  indexPickupSuccess: 'Succesfully showing all pickup games in your area',
+  indexPickupFailure: 'Problem showing pickup games in your area',
+  createPickupSuccess: 'Succesfully created the pickup game',
+  createPickupFailure: 'Problem creating the pickup game',
+  updatePickupSuccess: 'Succesfully updated the pickup game',
+  updatePickupFailure: 'Problem updating the pickup game',
+  deletePickupSuccess: 'Succesfully deleted the pickup game',
+  deletePickupFailure: 'Problem deleting the',
+  showPickupSuccess: 'Succesfully showing the pickup game you requested',
+  showPickupFailure: 'Problem showing the pickup game you requested'
 }

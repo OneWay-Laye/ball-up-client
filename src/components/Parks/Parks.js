@@ -3,11 +3,12 @@ import Spinner from 'react-bootstrap/Spinner'
 import { Link, withRouter } from 'react-router-dom'
 
 import './Parks.scss'
+import messages from '../AutoDismissAlert/messages'
 import { getAllParks } from './../../api/park'
 
 class Parks extends Component {
-  constructor () {
-    super()
+  constructor (props) {
+    super(props)
     this.state = {
       parks: null,
       showCreate: false
@@ -17,6 +18,16 @@ class Parks extends Component {
   componentDidMount () {
     getAllParks()
       .then(res => this.setState({ parks: res.data.parks }))
+      .then(() => this.props.msgAlert({
+        heading: 'All Parks Success',
+        message: messages.indexParkSuccess,
+        variant: 'success'
+      }))
+      .catch(() => this.props.msgAlert({
+        heading: 'All Parks Failure',
+        message: messages.indexParkFailure,
+        variant: 'danger'
+      }))
   }
 
   handleShowForm () {
@@ -50,7 +61,6 @@ class Parks extends Component {
           {park.indoor ? <p className="parkCard-Type">Type: Indoor</p> : <p className="parkCard-Type">Type: Outdoor</p>}
           <div className="parkCard-Button-Container">
             <Link to={`/create-pickup/${park.id}`}><button>Start Pickup Game at this Park</button></Link>
-            <button>Show Pickup Games for this Park</button>
           </div>
         </div>
       ))

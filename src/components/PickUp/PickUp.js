@@ -3,6 +3,7 @@ import Spinner from 'react-bootstrap/Spinner'
 import { Link, withRouter } from 'react-router-dom'
 
 import { indexPickup } from './../../api/pick-up-games'
+import messages from '../AutoDismissAlert/messages'
 import './PickUp.scss'
 
 class PickUp extends Component {
@@ -15,19 +16,21 @@ class PickUp extends Component {
 
   componentDidMount () {
     indexPickup()
-      .then(res => {
-        console.log(res)
-        return res
-      })
       .then(res => this.setState({ meetups: res.data }))
+      .then(() => this.props.msgAlert({
+        heading: 'All Parks Success',
+        message: messages.indexPickupSuccess,
+        variant: 'success'
+      }))
+      .catch(() => this.props.msgAlert({
+        heading: 'All Parks Failure',
+        message: messages.indexPickupFailure,
+        variant: 'danger'
+      }))
   }
 
   render () {
     let pickupJsx = ''
-    // const editPUJsx = <div>
-    //   <button>Update Pickup Game</button>
-    //   <button onClick{}>Delete Pickup Game</button>
-    // </div>
 
     console.log(this.state.meetups)
     if (this.state.meetups === null) {
