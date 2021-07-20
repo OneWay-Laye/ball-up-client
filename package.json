@@ -20,6 +20,7 @@
     "react-dom": "^16.4.2",
     "react-map-gl": "^6.1.16",
     "react-router-dom": "^4.3.1",
+    "react-select": "^4.3.1",
     "resolve": "1.6.0",
     "url-loader": "0.6.2",
     "uuid": "^7.0.3"
@@ -76,6 +77,8 @@
     "extends": "react-app"
   },
   "devDependencies": {
+    "@iconify-icons/la": "^1.1.0",
+    "@iconify/react": "^1.1.4",
     "ajv": "^5.5.2",
     "babel-core": "6.26.0",
     "babel-eslint": "^9.0.0",

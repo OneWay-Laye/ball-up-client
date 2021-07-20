@@ -1,0 +1,28 @@
+.mininav {
+  display: flex;
+  color: #fa7906;
+  background-color: #2f4353;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+
+
+}
+
+
+.mininav-link {
+  list-style-type: none;
+  border: 3px solid #495159;
+  width: 50%;
+  display: flex;
+
+
+
+ & a {
+  color: #fa7906;
+  align-items: center;
+  justify-content: center;
+}
+}

@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
-
-import { getAllParks } from './../../api/park'
-
 import Spinner from 'react-bootstrap/Spinner'
+import { Link, withRouter } from 'react-router-dom'
+
+import './Parks.scss'
+import { getAllParks } from './../../api/park'
 
 class Parks extends Component {
   constructor () {
     super()
     this.state = {
-      parks: null
+      parks: null,
+      showCreate: false
     }
   }
 
@@ -17,21 +19,48 @@ class Parks extends Component {
       .then(res => this.setState({ parks: res.data.parks }))
   }
 
+  handleShowForm () {
+    this.setState({ showCreate: true })
+  }
+
   render () {
+    const { parks } = this.state
     let parksJsx = ''
 
-    if (this.state.parks === null) {
+    //  This will be for the parkJsx
+    if (parks === null) {
       parksJsx = <Spinner animation="border" variant="warning" />
-    } else if (this.state.parks.length === 0) {
+    } else if (parks.length === 0) {
       parksJsx = <p>There are no parks in the area</p>
+    } else if (!this.props.user && parks.length > 0) {
+      parksJsx = this.state.parks.map(park => (
+        <div className="parkCard" key={park.id}>
+          <h3 className="parkCard-Name">{park.name}</h3>
+          <p className="parkCard-Address"><span className='parkCard-Title'>Address:</span> {park.address}</p>
+          <p className="parkCard-Courts"><span className='parkCard-Title'>Number of courts:</span> {park.numOfCourts}</p>
+          {park.indoor ? <p className="parkCard-Type">Type: Indoor</p> : <p className="parkCard-Type">Type: Outdoor</p>}
+        </div>
+      ))
+    } else if (this.props.user && parks.length > 0) {
+      parksJsx = parks.map(park => (
+        <div className="parkCard" key={park.id}>
+          <h3 className="parkCard-Name">{park.name}</h3>
+          <p className="parkCard-Address"><span className='parkCard-Title'>Address:</span> {park.address}</p>
+          <p className="parkCard-Courts"><span className='parkCard-Title'>Number of courts:</span> {park.numOfCourts}</p>
+          {park.indoor ? <p className="parkCard-Type">Type: Indoor</p> : <p className="parkCard-Type">Type: Outdoor</p>}
+          <div className="parkCard-Button-Container">
+            <Link to={`/create-pickup/${park.id}`}><button>Start Pickup Game at this Park</button></Link>
+            <button>Show Pickup Games for this Park</button>
+          </div>
+        </div>
+      ))
     }
 
     return (
-      <div>
-        im in parks
+      <div className="parksWrapper">
         {parksJsx}
       </div>
     )
   }
 }
-export default Parks
+export default withRouter(Parks)
