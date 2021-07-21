@@ -149,7 +149,7 @@ module.exports = {
             include: paths.appSrc,
             loader: require.resolve('babel-loader'),
             options: {
-              exclude: { exclude: new RegExp(/node_modules\/(?@math.gl)/) },
+
               compact: true,
             },
           },
