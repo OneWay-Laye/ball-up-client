@@ -1,4 +1,3 @@
-const MinifyJsPlugin = require('babel-minify-webpack-plugin');
 'use strict'
 
 const autoprefixer = require('autoprefixer')
@@ -11,6 +10,7 @@ const InterpolateHtmlPlugin = require('react-dev-utils/InterpolateHtmlPlugin')
 const SWPrecacheWebpackPlugin = require('sw-precache-webpack-plugin')
 const eslintFormatter = require('react-dev-utils/eslintFormatter')
 const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin')
+import MinifyJsPlugin from 'babel-minify-webpack-plugin';
 const paths = require('./paths')
 const getClientEnvironment = require('./env')
 
