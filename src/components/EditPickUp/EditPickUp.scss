@@ -1,0 +1,54 @@
+.editPU-Container {
+  margin: 5%;
+
+  & .editPU-Button-Container{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 5%;
+
+    & .delete{
+        background-color: #2f4353;
+        color: red;
+      }
+
+    & .cancel{
+        background-color: #2f4353;
+        color:#FAA307;
+    }
+  }
+
+  & .editPU-Info-Container{
+    margin: 3%;
+    text-align: center;
+  }
+
+  & .editPU-Form-Container {
+    margin-top: 10%;
+    ::-webkit-datetime-edit { padding: 1em; }
+
+    & .editPU-Form-Title {
+      text-align: center
+    }
+
+    & .editPU-Form {
+
+      & input {
+        margin: 4%
+      }
+
+      & button {
+        margin: 4%
+      }
+    }
+  }
+}
+
+.editPU-Button {
+    background-color: #FAA307;
+    border: #FAA307;
+    border-radius: 15px;
+    font-weight: bold;
+    width: 40%;
+    padding: 15px;
+    font-size: 18px;
+}

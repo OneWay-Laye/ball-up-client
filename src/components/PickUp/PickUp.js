@@ -40,26 +40,26 @@ class PickUp extends Component {
     } else if (this.state.meetups.length > 0 && !this.props.user) {
       pickupJsx = this.state.meetups.map(meet => (
         <div className='meetupCard' key={meet.id}>
-          <h3>Game At: {meet.park.name}</h3>
-          <p>Address: {meet.park.address}</p>
-          <p>Date: {meet.scheduled}</p>
+          <h3 className='meetupCard-Title'>Game At: {meet.park.name}</h3>
+          <p className='meetupCard-Addy'>Address: {meet.park.address}</p>
+          <p className='meetupCard-Date'>Date: {meet.scheduled}</p>
         </div>
       ))
     } else {
       pickupJsx = this.state.meetups.map(meet => (
         <div className='meetupCard' key={meet.id}>
-          <h3>Game At: {meet.park.name}</h3>
-          <p>Address: {meet.park.address}</p>
-          <p>Date: {meet.scheduled}</p>
+          <h3 className='meetupCard-Title'>Game At: {meet.park.name}</h3>
+          <p className='meetupCard-Addy'>Address: {meet.park.address}</p>
+          <p className='meetupCard-Date'>Date: {meet.scheduled}</p>
           {this.props.user.id === meet.owner ? <div>
-            <Link to={`/edit-pickup/${meet.id}`}><button>Edit PickUp</button></Link>
+            <Link to={`/edit-pickup/${meet.id}`}><button className='meetupCard-Button'>Edit PickUp</button></Link>
           </div> : null}
         </div>
       ))
     }
 
     return (
-      <div>
+      <div className="meetup-Wrapper">
         <h1>Im in pickup</h1>
         {pickupJsx}
       </div>

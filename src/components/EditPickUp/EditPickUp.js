@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter, Redirect } from 'react-router-dom'
 import Spinner from 'react-bootstrap/Spinner'
 import messages from '../AutoDismissAlert/messages'
+import './EditPickUp.scss'
 
 import { showPickup, updatePickup, deletePickup } from './../../api/pick-up-games'
 
@@ -85,16 +86,16 @@ class EditPickUp extends Component {
 
     return (
       <div className="editPU-Container">
-        <div>
-          <button type='button' onClick={this.handleCancel}>Cancel Update</button>
-          <button type='button' onClick={this.handleDelete}>Delete Pickup Game</button>
+        <div className="editPU-Button-Container">
+          <button className="editPU-Button cancel" type='button' onClick={this.handleCancel}>Cancel Update</button>
+          <button className="editPU-Button delete" type='button' onClick={this.handleDelete}>Delete Pickup Game</button>
         </div>
         {pickupInfoJsx}
         <div className="editPU-Form-Container">
-          <h3>Change Scheduled date</h3>
-          <form>
+          <h3 className="editPU-Form-Title">Change Scheduled date</h3>
+          <form className="editPU-Form">
             <input type='date' name="scheduled" onChange={this.handleChange} value={this.state.scheduled}/>
-            <button type='button' onClick={this.handleSubmit}>Confirm Updated Date</button>
+            <button className="editPU-Button" type='button' onClick={this.handleSubmit}>Confirm Updated Date</button>
           </form>
         </div>
       </div>

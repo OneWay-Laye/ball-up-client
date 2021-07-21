@@ -11,6 +11,6 @@ export const getAllParks = () => {
 export const getPark = pk => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/park/pk/'
+    url: apiUrl + `/park/${pk}/`
   })
 }

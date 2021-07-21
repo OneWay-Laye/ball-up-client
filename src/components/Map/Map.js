@@ -5,7 +5,7 @@ import { getAllParks } from './../../api/park'
 
 function Map () {
   const [viewport, setViewport] = useState({
-    width: '60vw',
+    width: '55vw',
     height: '100vh',
     latitude: 33.749,
     longitude: -84.38798,

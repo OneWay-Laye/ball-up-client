@@ -60,7 +60,7 @@ class Parks extends Component {
           <p className="parkCard-Courts"><span className='parkCard-Title'>Number of courts:</span> {park.numOfCourts}</p>
           {park.indoor ? <p className="parkCard-Type">Type: Indoor</p> : <p className="parkCard-Type">Type: Outdoor</p>}
           <div className="parkCard-Button-Container">
-            <Link to={`/create-pickup/${park.id}`}><button>Start Pickup Game at this Park</button></Link>
+            <Link to={`/create-pickup/${park.id}`}><button className="parkCard-Button">Start Pickup Game at this Park</button></Link>
           </div>
         </div>
       ))
