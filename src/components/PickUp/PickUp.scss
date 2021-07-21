@@ -1,5 +1,27 @@
+.meetup-Wrapper {
+  height: 81vh;
+  overflow: auto;
+}
+
 .meetupCard {
   margin: 5%;
   border: 2px solid #495159;
+  border-radius: 15px;
   padding: 2%;
+  background-color: #2f4353;
+  color: white;
+
+  & .meetupCard-Title {
+    color: #fe8c00
+  }
+
+  & .meetupCard-Button {
+    background-color: #FAA307;
+    border: #FAA307;
+    border-radius: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+  }
 }

@@ -1,17 +1,18 @@
 import React, { useState, useEffect } from 'react'
 import './Map.scss'
-import ReactMapGL, { Marker } from 'react-map-gl'
+import ReactMapGL, { Marker, Popup } from 'react-map-gl'
 import { getAllParks } from './../../api/park'
 
 function Map () {
   const [viewport, setViewport] = useState({
-    width: '60vw',
+    width: '55vw',
     height: '100vh',
     latitude: 33.749,
     longitude: -84.38798,
     zoom: 11
   })
   const [parks, setParks] = useState([])
+  const [selectedPark, setSelectedPark] = useState(null)
 
   useEffect(() => {
     getAllParks()
@@ -31,11 +32,30 @@ function Map () {
           latitude={Number(park.latitude)}
           longitude={Number(park.longitude)}
         >
-          <button className='markerButton'>
-            <img src='./../../../public/668-basketball.svg' alt='basketball-icon'/>
+          <button
+            className='markerButton'
+            onClick={event => {
+              event.preventDefault()
+              setSelectedPark(park)
+            }}>
+            <img src='./../../../668-basketball.svg' alt='basketball-icon'/>
           </button>
         </Marker>
       ))}
+
+      {selectedPark && (
+        <Popup
+          latitude={Number(selectedPark.latitude)}
+          longitude={Number(selectedPark.longitude)}
+          onClose={() => { setSelectedPark(null) }}
+          className='popUp-Container'
+        >
+          <div className='popUp-Container'>
+            <h2>{selectedPark.name}</h2>
+            <p>{selectedPark.address}</p>
+          </div>
+        </Popup>
+      )}
     </ReactMapGL>
   </div>
   )

@@ -1,5 +1,5 @@
 .parksWrapper {
-  height: 85vh;
+  height: 81vh;
   overflow: auto;
   color: white;
   background: #fe8c00;  /* fallback for old browsers */
@@ -11,9 +11,26 @@ background: linear-gradient(to top, #f83600, #fe8c00); /* W3C, IE 10+/ Edge, Fir
 .parkCard {
   margin: 5%;
   border: 2px solid #495159;
+  border-radius: 15px;
   padding: 2%;
+  background-color: #2f4353;
+  color: white;
+
+& .parkCard-Name {
+  color: #fe8c00
+}
 
 & .parkCard-Button-Container {
   display: flex;
+
+  & .parkCard-Button {
+    background-color: #FAA307;
+    border: #FAA307;
+    border-radius: 15px;
+    font-weight: bold;
+    width: 100%;
+    padding: 15px;
+    font-size: 18px;
+  }
 }
 }

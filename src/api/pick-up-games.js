@@ -42,7 +42,7 @@ export const deletePickup = (user, id) => {
   })
 }
 
-export const updateMeetup = (user, id, data) => {
+export const updatePickup = (user, id, data) => {
   return axios({
     method: 'PATCH',
     url: `${apiUrl}/meetup/${id}/edit/`,
@@ -50,7 +50,8 @@ export const updateMeetup = (user, id, data) => {
       'Authorization': `Token ${user.token}`
     },
     data: {
-      data
-    }
+      meetup: {
+        scheduled: data
+      } }
   })
 }
