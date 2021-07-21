@@ -59,7 +59,6 @@ class PickUp extends Component {
 
     return (
       <div className="meetup-Wrapper">
-        <h1>Im in pickup</h1>
         {pickupJsx}
       </div>
     )
