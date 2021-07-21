@@ -48,11 +48,11 @@ function Map () {
           latitude={Number(selectedPark.latitude)}
           longitude={Number(selectedPark.longitude)}
           onClose={() => { setSelectedPark(null) }}
+          className='popUp-Container'
         >
-          <div>
+          <div className='popUp-Container'>
             <h2>{selectedPark.name}</h2>
             <p>{selectedPark.address}</p>
-            <button>View this parks games</button>
           </div>
         </Popup>
       )}

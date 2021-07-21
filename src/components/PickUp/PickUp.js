@@ -32,7 +32,6 @@ class PickUp extends Component {
   render () {
     let pickupJsx = ''
 
-    console.log(this.state.meetups)
     if (this.state.meetups === null) {
       pickupJsx = <Spinner animation="border" variant="warning" />
     } else if (this.state.meetups.length === 0) {

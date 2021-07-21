@@ -20,8 +20,6 @@ class CreatePickUp extends Component {
   }
 
   componentDidMount () {
-    console.log(this.props.match)
-    console.log(this.props)
     getPark(this.props.match.params.id)
       .then(res => this.setState({ parkforPU: res.data.park }))
 
@@ -37,7 +35,6 @@ class CreatePickUp extends Component {
 
   handleSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
     createPickup(this.props.user, this.state)
       .then(() => this.props.msgAlert({
         heading: 'Create PickUp Success',
